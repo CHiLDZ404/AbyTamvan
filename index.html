@@ -24,7 +24,6 @@
             overflow-x: hidden;
         }
 
-        /* Custom scroll */
         ::-webkit-scrollbar {
             width: 6px;
         }
@@ -37,7 +36,6 @@
             border-radius: 10px;
         }
 
-        /* Glassmorphism */
         .glass-card {
             background: rgba(255, 255, 255, 0.55);
             backdrop-filter: blur(12px);
@@ -53,7 +51,6 @@
             border-color: #5dade2;
         }
 
-        /* Buttons */
         .btn-primary {
             background: #1e6f9f;
             color: white;
@@ -91,7 +88,6 @@
             transform: translateY(-2px);
         }
 
-        /* Background blobs (tidak mengganggu layout) */
         .bg-animate {
             position: fixed;
             top: 0;
@@ -113,7 +109,6 @@
             100% { transform: translate(0, 0) scale(1); opacity: 0.2; }
         }
 
-        /* Section title */
         .section-title {
             font-size: 2rem;
             font-weight: 700;
@@ -133,7 +128,6 @@
             border-radius: 4px;
         }
 
-        /* Badge & skill */
         .skill-badge {
             background: rgba(46, 134, 171, 0.15);
             backdrop-filter: blur(4px);
@@ -160,7 +154,6 @@
             font-size: 0.85rem;
         }
 
-        /* navbar responsive fix */
         .nav-glass {
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(12px);
@@ -194,7 +187,6 @@
             .nav-links { justify-content: center; gap: 1.2rem; }
         }
 
-        /* timeline grid fix */
         .timeline-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -208,7 +200,6 @@
             .timeline-grid { grid-template-columns: 1fr; }
         }
 
-        /* container global */
         .container-custom {
             max-width: 1280px;
             margin-left: auto;
@@ -217,7 +208,6 @@
             padding-right: 1.5rem;
         }
 
-        /* avatar responsif */
         .avatar-circle {
             background: linear-gradient(145deg, #c2e4ff, #a7d4f0);
             width: 140px;
@@ -235,7 +225,6 @@
             .section-title { font-size: 1.7rem; }
         }
 
-        /* Form responsif */
         .contact-form input, .contact-form textarea {
             width: 100%;
             padding: 12px 16px;
@@ -262,13 +251,42 @@
             text-align: center;
             border-top: 1px solid #9bc6e0;
         }
+
+        /* Music Toggle Button Style */
+        .music-toggle-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: linear-gradient(135deg, #1e6f9f, #0e5a85);
+            backdrop-filter: blur(12px);
+            border-radius: 50px;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            color: white;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .music-toggle-btn:hover {
+            transform: scale(1.02);
+            background: linear-gradient(135deg, #0e5a85, #094561);
+        }
+        @media (max-width: 500px) {
+            .music-toggle-btn { padding: 8px 16px; font-size: 0.75rem; }
+        }
     </style>
 </head>
 <body>
 
 <div class="bg-animate" id="bgBlobs"></div>
 
-<!-- Navbar sticky elegan -->
+<!-- Navbar -->
 <div style="position: sticky; top: 20px; z-index: 200; width: 100%; padding: 0 1rem;">
     <div class="nav-glass container-custom" style="margin: 0 auto;">
         <div style="font-weight: 800; font-size: 1.5rem; background: linear-gradient(135deg, #1f7ea3, #0a4b6e); -webkit-background-clip: text; background-clip: text; color: transparent;">
@@ -283,7 +301,18 @@
     </div>
 </div>
 
-<!-- Hero Section (tidak ada tabrakan) -->
+<!-- Audio Lagu "Motivasi Aby" -->
+<audio id="bg-music" loop>
+    <source src="motivasi.mp3" type="audio/mpeg">
+    Browser Anda tidak mendukung audio.
+</audio>
+
+<!-- Tombol Play/Pause Music -->
+<button id="musicToggle" class="music-toggle-btn">
+    <i class="fas fa-music"></i> Play Music
+</button>
+
+<!-- Hero Section -->
 <section id="home" class="container-custom" style="margin: 40px auto 50px;">
     <div class="glass-card" data-aos="fade-up" style="padding: 2rem 2rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 2rem;">
         <div style="flex: 2; min-width: 220px;">
@@ -310,7 +339,7 @@
     </div>
 </section>
 
-<!-- Tentang + Keahlian (dirapikan) -->
+<!-- Tentang -->
 <section id="tentang" class="container-custom" style="margin: 60px auto;">
     <div data-aos="fade-right">
         <h2 class="section-title">Tentang & Keahlian</h2>
@@ -350,7 +379,7 @@
     </div>
 </section>
 
-<!-- Pengalaman (Timeline tanpa tabrakan) -->
+<!-- Pengalaman -->
 <section id="pengalaman" class="container-custom" style="margin: 60px auto;">
     <div data-aos="fade-right">
         <h2 class="section-title">Perjalanan & Pengalaman</h2>
@@ -383,7 +412,7 @@
     </div>
 </section>
 
-<!-- Statistik prestasi (ringkas) -->
+<!-- Statistik -->
 <section class="container-custom" style="margin: 40px auto;">
     <div class="glass-card" data-aos="zoom-in" style="padding: 1.8rem; text-align: center;">
         <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;">
@@ -394,7 +423,7 @@
     </div>
 </section>
 
-<!-- Quote & Cita-cita -->
+<!-- Quote -->
 <section class="container-custom" style="margin: 50px auto;">
     <div class="glass-card" data-aos="flip-up" style="padding: 2rem; text-align: center; background: rgba(185, 225, 255, 0.5);">
         <i class="fas fa-quote-right" style="font-size: 2rem; opacity: 0.6; color: #0e6085;"></i>
@@ -404,7 +433,7 @@
     </div>
 </section>
 
-<!-- Kontak (tidak tabrakan) -->
+<!-- Kontak -->
 <section id="kontak" class="container-custom" style="margin: 60px auto;">
     <div data-aos="fade-right"><h2 class="section-title">Hubungi & Jejak Digital</h2></div>
     <div class="glass-card" data-aos="fade-up" style="padding: 2rem; display: flex; flex-wrap: wrap; gap: 2rem;">
@@ -443,7 +472,7 @@
 <script>
     AOS.init({ duration: 800, once: true });
 
-    // Background blobs dinamis tanpa mengganggu layout
+    // Background blobs
     function createBlobs() {
         const bgDiv = document.getElementById('bgBlobs');
         if(bgDiv) {
@@ -463,7 +492,7 @@
     }
     createBlobs();
 
-    // Smooth scroll untuk semua anchor
+    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const hash = this.getAttribute('href');
@@ -476,7 +505,7 @@
         });
     });
 
-    // Form handler (tidak error)
+    // Form handler
     const contactForm = document.getElementById('contactForm');
     const feedback = document.getElementById('formFeedback');
     if(contactForm) {
@@ -495,6 +524,31 @@
             feedback.style.color = '#0e6b3e';
             contactForm.reset();
             setTimeout(() => feedback.innerHTML = '', 3500);
+        });
+    }
+
+    // ========= MUSIC PLAYER (JS yang Anda kirim) =========
+    const music = document.getElementById("bg-music");
+    const toggleBtn = document.getElementById("musicToggle");
+
+    // Auto-play ketika user pertama kali klik di halaman (mematuhi kebijakan browser)
+    document.addEventListener("click", function () {
+        if (music && music.paused) {
+            music.volume = 0.5;
+            music.play().catch(e => console.log("Auto-play error:", e));
+        }
+    }, { once: true });
+
+    // Tombol Play/Pause manual
+    if (toggleBtn && music) {
+        toggleBtn.addEventListener("click", () => {
+            if (music.paused) {
+                music.play();
+                toggleBtn.innerHTML = '<i class="fas fa-pause"></i> Pause Music';
+            } else {
+                music.pause();
+                toggleBtn.innerHTML = '<i class="fas fa-music"></i> Play Music';
+            }
         });
     }
 </script>
